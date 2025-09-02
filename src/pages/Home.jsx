@@ -1,16 +1,12 @@
-export default function Home() {
-    const loremTexts = [
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "Pellentesque ac ligula in tellus feugiat iaculis.",
-        "Curabitur ut eros non enim ullamcorper fermentum.",
-        "Suspendisse potenti. Sed sit amet lorem vel justo tempor luctus.",
-        "Phasellus non magna vel mauris faucibus cursus."
-    ];
+import SensorCard from "../components/Sensors/SensorCard";
+import { sensors } from "../config/sensors";
 
+export default function Home() {
     return (
-        <div className="content">
-            <h1>Home</h1>
-            <p>{loremTexts}</p>
+        <div className="flex flex-wrap gap-6 ">
+            <button onClick={onStartButtonClick}>Start</button>
+            <button onClick={onStopButtonClick}>Stop</button>
+            {telemetry && <Dashboard data={telemetry} />}
         </div>
     );
 }

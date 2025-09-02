@@ -1,30 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AppLayout from "./AppLayout";
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
+/* Pages */
 import Home from "./pages/Home";
+import Sensors from "./pages/Sensors";
 import Info from "./pages/Info";
-import Vite from "./pages/Vite";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
 
 
-function App() {
-    const [count, setCount] = useState(0)
-
+export default function App() {
     return (
-        <Router>
-            <div className="app">
-                <Sidebar />
-                <Routes>
+        <BrowserRouter>
+            <Routes>
+                {/* Parent route with layout */}
+                <Route element={<AppLayout />}>
+                    {/* Nested routes */}
                     <Route path="/" element={<Home />} />
-                    <Route path="/info" element={<Info />} />
-                    <Route path="/vite" element={<Vite />} />
-                </Routes>
-            </div>
-        </Router>
-    )
+                    <Route path="sensors" element={<Sensors />} />
+                    <Route path="info" element={<Info />} />
+                    <Route path="profile" element={<Profile />} />
+                    <Route path="settings" element={<Settings />} />
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
 }
-
-export default App
